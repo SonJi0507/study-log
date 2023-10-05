@@ -1,4 +1,4 @@
-from abc import ABCMeta, abstractmethod
+from abc import ABCMeta
 
 
 class Command(metaclass=ABCMeta):
@@ -21,12 +21,14 @@ class Receiver:
     def action(self):
         print("Receiver Action")
 
+
 class Invoker:
     def command(self, cmd):
         self.cmd = cmd
 
     def execute(self):
         self.cmd.execute()
+
 
 if __name__ == "__main__":
     recv = Receiver()

@@ -1,3 +1,6 @@
+from abc import ABCMeta, abstractmethod
+
+
 # --- subject ---
 class NewsPublisher:
     def __init__(self):
@@ -9,10 +12,10 @@ class NewsPublisher:
 
     def detach(self):
         return self.__subscribers.pop()
-    
+
     def subscribers(self):
         return [type(x).__name__ for x in self.__subscribers]
-    
+
     def notifySubscribers(self):
         for sub in self.__subscribers:
             sub.update()
@@ -22,12 +25,9 @@ class NewsPublisher:
 
     def getNews(self):
         return "Got News:", self.__latestNews
-    
+
 
 # --- observer ---
-from abc import ABCMeta, abstractmethod
-
-
 class Subscriber(metaclass=ABCMeta):
     @abstractmethod
     def update(self):

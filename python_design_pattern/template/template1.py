@@ -18,6 +18,7 @@ class AbstractClass(metaclass=ABCMeta):
         self.operation2()
         self.operation1()
 
+
 class ConcreteClass(AbstractClass):
     def operation1(self):
         print("My Concreate Operation1")
@@ -25,10 +26,12 @@ class ConcreteClass(AbstractClass):
     def operation2(self):
         print("Operation 2 remains same")
 
+
 class Client:
     def main(self):
         self.concrete = ConcreteClass()
         self.concrete.template_method()
+
 
 client = Client()
 client.main()

@@ -1,7 +1,7 @@
 from abc import ABCMeta, abstractmethod
 
 
-class Animal(metaclass = ABCMeta):
+class Animal(metaclass=ABCMeta):
     @abstractmethod
     def do_say(self):
         pass
@@ -20,8 +20,9 @@ class Cat(Animal):
 class ForestFactory(object):
     def make_sound(self, object_type):
         return eval(object_type)().do_say()
-    
-if __name__ == '__main__':
+
+
+if __name__ == "__main__":
     ff = ForestFactory()
     animal = input("Which animal should make_sound Dog or Cat?")
     ff.make_sound(animal)

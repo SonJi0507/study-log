@@ -23,7 +23,7 @@ class TVContext(State):
 
     def getState(self):
         return self.state
-    
+
     def setState(self, state):
         self.state = state
 

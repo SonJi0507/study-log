@@ -9,9 +9,10 @@ class Actor(object):
     def available(self):
         self.isBusy = False
         print(type(self).__name__, "is free for the movie")
-    
+
     def getStatus(self):
         return self.isBusy
+
 
 class Agent(object):
     def __init__(self):
@@ -21,7 +22,7 @@ class Agent(object):
         self.actor = Actor()
         if self.actor.getStatus():
             self.actor.occupied()
-        else :
+        else:
             self.actor.available()
 
 

@@ -1,9 +1,11 @@
 class Borg:
-    __shared_state = {"1":"2"}
+    __shared_state = {"1": "2"}
+
     def __init__(self):
         self.x = 1
         self.__dict__ = self.__shared_state
-        
+
+
 b = Borg()
 b1 = Borg()
 b.x = 4
@@ -20,8 +22,10 @@ Object State 'b': {'1': '2', 'x': 4}
 Object State 'b1' {'1': '2', 'x': 4}
 """
 
+
 class Borg2(object):
     _shared_state = {}
+
     def __new__(cls, *args, **kwargs):
         obj = super(Borg, cls).__new__(cls, *args, **kwargs)
         obj.__dict__ = cls._shared_state

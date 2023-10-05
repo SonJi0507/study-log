@@ -12,9 +12,10 @@ class EventManager(object):
 
         self.caterer = Caterer()
         self.caterer.setCuisine()
-        
+
         self.musician = Musician()
         self.musician.setMusicType()
+
 
 # --- subsystem ---
 class Hotelier(object):
@@ -24,10 +25,11 @@ class Hotelier(object):
     def __isAvailable(self):
         print("Is the Hotel free for the event on given day?")
         return True
-    
+
     def bookHotel(self):
         if self.__isAvailable():
             print("Registered the Booking\n\n")
+
 
 class Florist(object):
     def __init__(self):
@@ -36,12 +38,14 @@ class Florist(object):
     def setFlowerRequirements(self):
         print("Carnations, Roses and Lilies would be used for Decorations\n")
 
+
 class Caterer(object):
     def __init__(self):
-         print("Food Arrangements for the Event --")
+        print("Food Arrangements for the Event --")
 
     def setCuisine(self):
         print("Chiness & Continental Cuisine to be served\n")
+
 
 class Musician(object):
     def __init__(self):
@@ -50,14 +54,17 @@ class Musician(object):
     def setMusicType(self):
         print("Jazz and Classical will be played\n")
 
+
 # --- client ---
 class You(object):
     def __init__(self):
         print("You:: Marriage Arrangements??!")
+
     def askEventManager(self):
         print("You:: Let's Contact the Event Manager\n")
         em = EventManager()
         em.arrange()
+
     def __del__(self):
         print("You:: Thanks to Event Manager, all preparations done!")
 

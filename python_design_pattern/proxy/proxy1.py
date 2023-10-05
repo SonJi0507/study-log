@@ -1,3 +1,6 @@
+from abc import ABCMeta, abstractmethod
+
+
 # --- clinet ---
 class You:
     def __init__(self):
@@ -11,13 +14,11 @@ class You:
     def __del__(self):
         if self.isPurchased:
             print("You:: Denim shirt is Mine")
-        else :
+        else:
             print("You:: I should earn more")
 
 
 # --- subject ---
-from abc import ABCMeta, abstractmethod
-
 class Payment(metaclass=ABCMeta):
     @abstractmethod
     def do_pay(self):
@@ -33,11 +34,11 @@ class Bank(Payment):
     def __getAccount(self):
         self.account = self.card
         return self.account
-    
+
     def __hasFunds(self):
         print("Bank:: Checking if Account", self.__getAccount(), "has enough funds")
         return True
-    
+
     def setCard(self, card):
         self.card = card
 
@@ -45,7 +46,7 @@ class Bank(Payment):
         if self.__hasFunds():
             print("Bank:: Paying the merchant")
             return True
-        else :
+        else:
             print("Bank:: Sorry, not enough funds!")
             return False
 

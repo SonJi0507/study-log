@@ -67,11 +67,11 @@ class MaldivesTrip(Trip):
 class TravelAgency:
     def arrange_trip(self):
         choice = input("What kind of place you'd like to go historical or to a beach?")
-    
-        if choice == 'historical':
+
+        if choice == "historical":
             self.trip = VeniceTrip()
             self.trip.itinerary()
-        elif choice == 'beach':
+        elif choice == "beach":
             self.trip = MaldivesTrip()
             self.trip.itinerary()
 
