@@ -1,16 +1,16 @@
-class Model(object):
+class Model:
     def logic(self):
         data = "Got it!"
         print("Model: Crunching data as per business logic")
         return data
 
 
-class View(object):
+class View:
     def update(self, data):
         print("View: Updating the view with results: ", data)
 
 
-class Controller(object):
+class Controller:
     def __init__(self):
         self.model = Model()
         self.view = View()
@@ -21,7 +21,7 @@ class Controller(object):
         self.view.update(data)
 
 
-class Client(object):
+class Client:
     print("Client: asks for certain information")
     controller = Controller()
     controller.interface()
