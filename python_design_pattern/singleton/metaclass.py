@@ -5,13 +5,13 @@ class MyInt(type):
         return type.__call__(cls, *args, **kwds)
 
 
-class int(metaclass=MyInt):
+class Int(metaclass=MyInt):
     def __init__(self, x, y):
         self.x = x
         self.y = y
 
 
-i = int(4, 5)
+i = Int(4, 5)
 """
 int class 생성시 MyInt의 __call__ 가 실행 됨. 객체 생성을 metaclass가 제어함
 """

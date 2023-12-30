@@ -20,7 +20,7 @@ class Compiler(metaclass=ABCMeta):
         self.run()
 
 
-class iOSCompiler(Compiler):
+class IOSCompiler(Compiler):
     def collectSource(self):
         print("Collecting Swift Source Code")
 
@@ -31,7 +31,7 @@ class iOSCompiler(Compiler):
         print("Program runing on runtime environment")
 
 
-iOS = iOSCompiler()
+iOS = IOSCompiler()
 iOS.compileAndRun()
 
 """

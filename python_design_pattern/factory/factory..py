@@ -45,14 +45,14 @@ class Profile(metaclass=ABCMeta):
         self.sections.append(section)
 
 
-class linkedin(Profile):
+class Linkedin(Profile):
     def createProfile(self):
         self.addSections(PersonalSection())
         self.addSections(PatentSection())
         self.addSections(PublicationSection())
 
 
-class facebook(Profile):
+class Facebook(Profile):
     def createProfile(self):
         self.addSections(PersonalSection())
         self.addSections(AlbumSection())
