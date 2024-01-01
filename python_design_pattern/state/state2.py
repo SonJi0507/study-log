@@ -1,5 +1,5 @@
 # --- state ---
-class ComputerState(object):
+class ComputerState:
     name = "state"
     allowed = []
 
@@ -36,7 +36,7 @@ class Hibernate(ComputerState):
 
 
 # --- context ---
-class Computer(object):
+class Computer:
     def __init__(self, model="HP"):
         self.model = model
         self.state = Off()

@@ -17,7 +17,7 @@ class Cat(Animal):
         print("Meow Meow!!")
 
 
-class ForestFactory(object):
+class ForestFactory:
     def make_sound(self, object_type):
         return eval(object_type)().do_say()
 

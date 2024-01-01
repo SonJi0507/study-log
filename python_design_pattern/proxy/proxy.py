@@ -1,4 +1,4 @@
-class Actor(object):
+class Actor:
     def __init__(self):
         self.isBusy = False
 
@@ -14,7 +14,7 @@ class Actor(object):
         return self.isBusy
 
 
-class Agent(object):
+class Agent:
     def __init__(self):
         self.principal = None
 

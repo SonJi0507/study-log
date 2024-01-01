@@ -1,4 +1,4 @@
-class Model(object):
+class Model:
     services = {
         "email": {
             "number": 1000,
@@ -15,7 +15,7 @@ class Model(object):
     }
 
 
-class View(object):
+class View:
     def list_services(self, services):
         for svc in services:
             print(svc, " ")
@@ -31,7 +31,7 @@ class View(object):
             )
 
 
-class Controller(object):
+class Controller:
     def __init__(self):
         self.model = Model()
         self.view = View()
@@ -45,7 +45,7 @@ class Controller(object):
         return self.view.list_pricing(services)
 
 
-class Client(object):
+class Client:
     controller = Controller()
     print("Services Provided:")
     controller.get_services()

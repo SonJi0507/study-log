@@ -23,7 +23,7 @@ Object State 'b1' {'1': '2', 'x': 4}
 """
 
 
-class Borg2(object):
+class Borg2:
     _shared_state = {}
 
     def __new__(cls, *args, **kwargs):
