@@ -23,8 +23,9 @@ Task를 수행하기 위해서 clinet는 Task Queue에 메세지를 추가하고
 - [참고](https://docs.celeryq.dev/en/stable/getting-started/backends-and-brokers/index.html#broker-overview)
 
 ## Broker 설치 (RabbitMQ)
-docker 환경에서 설치해서 사용해봤다.
+docker 환경에서 설치해서 사용했다.
 ``` sh
 docker run -d -p 5672:5672 rabbitmq
 ```
 <img src="./.static/.img/docker-rabbitMQ.png"></img>
+
