@@ -28,6 +28,8 @@ docker 환경에서 설치해서 사용했다.
 docker run -d -p 5672:5672 rabbitmq
 ```
 <img src="./.static/.img/docker-rabbitMQ.png"></img>
+(랜덤 이름으로 rabbitMQ container가 실행되었다.)
+
 
 ## Celery 설치
 poetry를 통하여 Celery를 설치했고 5.3.6 버젼이 설치 되었다.
@@ -103,3 +105,94 @@ AsyncResult 인스턴스를 반환 받았는데 이는 다음 동작이 가능�
 물론 result는 기본값으로 사용할 수는 없고 result backend를 설정해야 한다.
 
 ## 결과값 보관
+Task의 상태들을 추적하려면 Celery는 상태값을 어딘가 송신하거나 저장할 수 있어야 한다. SQLAlchemy/Django ORM, MongoDB, Memcached, Redis, RPC에서 몇 가지 내장된(built-in) Result backend를 선택 하거나 직접 정의할 수 있다.
+
+rpc result backend를 사용해보자.
+``` python
+app = Celery("tasks", backend="rpc://", broker="pyamqp://")
+```
+(backend 인자를 통해 지정할 수 있다.)
+
+가장 인기 있는 조합으로 backend로 Redis를 사용할 수도 있다.
+``` python
+app = Celery("tasks", backend="redis://localhost", broker**="pyamqp://")
+```
+자세한 backend 내용 [참고](https://docs.celeryq.dev/en/stable/userguide/tasks.html#task-result-backends)
+
+이제 부터는 task를 요청했을 때 반환된 AsyncResult 인스턴스를 가지고 있을 수 있게 됐다.
+``` python
+>>> from tasks import add
+>>> result = add.delay(4, 4)
+```
+
+`ready()` method는 task 처리가 완료되었는지 확인 할 수 있다.
+``` python
+>>> result.ready()
+True
+```
+만약 작업이 완료되지 않았다면 False를 반환한다.
+
+`get()` method를 통해 결과가 완료될 때까지 기다릴 수 있지만 비동기 호출을 굳이 동기 호출로 변환 되므로 거의 사용되지 않는다.
+
+``` python
+>>> result.get(timeout=1)
+8
+```
+timeout 설정 값(sec) 안에 반환되지 않으면 `TimeoutError`를 발생시킨다.
+
+만약 task 예외가 발생한 경우 get()은 예외를 다시 발생시키는데
+propagate=False 인자를 추가하여 재정의할 수 있다.
+``` python
+>>> result.get(propagate=False)
+```
+또한, 에러가 발생한 경우에 Traceback도 접근이 가능하다.
+``` python
+>>> result.traceback
+```
+
+> Backend에서 리소스를 사용하여 결과를 저장하고 전송하는데 리소스 해제를 확실하게 하기 위해서는 모든 AsyncResult에 대해 `get()` 또느 `forget()` method를 호출해야 한다. 
+
+## Configuration
+Celery에는 입력과 출력이 있는데 입력은 반드시 broker와 연결되고 출력은 선택적으로 result backend와 연결될 수 있다. 하지만 면밀하게 back단을 확인해보면 slider, dial, button이 있다.
+
+대부분의 상황에서 기본 설정값만 사용해도 충분히 좋지만 필요에 따라 정확하게 작동할 수 있도록 구성할 수 있는 옵션들이 많이 있다.   
+예를 들어서 `task_serializer`설정을 변경하여 task payload 의 기본 serializer를 변경 할 수 있다.
+
+``` python
+app.conf.task_serializer = "json"
+```
+한번에 많은 구성을 변경할 경우 update를 활용 할 수 있다.
+``` python
+app.conf.update(
+    task_serializer='json',
+    accept_content=['json'],  # Ignore other content
+    result_serializer='json',
+    timezone='Asia/Seoul',
+    enable_utc=True,
+)
+```
+대규모의 프로젝트인 경우, `app.config_from_object()` method를 사용하여 중앙 집중화된  전용 설정 모듈을 사용하는게 좋다.
+``` python
+app.config_from_object('celeryconfig')
+```
+(celeryconfig 모듈 이름은 자유롭게 설정할 수 있다.)
+
+위의 예시에 따라서 지정된 모듈인 celeryconfig.py는 현대 디렉토리나 python 경로에서 반드시 사용 가능해야 한다.
+
+``` python
+# celeryconfig.py
+
+broker_url = 'pyamqp://'
+result_backend = 'rpc://'
+
+task_serializer = 'json'
+result_serializer = 'json'
+accept_content = ['json']
+timezone = 'Europe/Oslo'
+enable_utc = True
+```
+만약 해당 구성 파일이 제대로 작동하는지 확인 하려면 해당 파일을 불러보자.
+``` sh
+python -m celeryconfig
+```
+[Configuration and defaults](https://docs.celeryq.dev/en/stable/userguide/configuration.html#configuration)
