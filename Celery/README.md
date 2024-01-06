@@ -196,3 +196,6 @@ enable_utc = True
 python -m celeryconfig
 ```
 [Configuration and defaults](https://docs.celeryq.dev/en/stable/userguide/configuration.html#configuration)
+
+
+# 작성 중...
