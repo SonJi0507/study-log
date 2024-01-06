@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "celery-prac"
+version = "0.1.0"
+description = ""
+authors = ["SonJi <jhson0507@gmail.com>"]
+readme = "README.md"
+packages = [{include = "celery_prac", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+celery = "^5.3.6"
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "F",
+    "UP",
+    "B",
+    "SIM",
+    "I",
+]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
