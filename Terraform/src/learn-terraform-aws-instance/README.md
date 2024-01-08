@@ -54,7 +54,7 @@ provider block을 여러개 사용하여 다른 provider의 여러 리소스를 
 
 resourc block은 type, name 2개의 문자열을 block전에 가진다. 예시에서는 resource의 type은 `aws_instance`이고 name은 `app_server`이다. type의 접두사(`aws`)는 provider의 이름(`aws`)와 매핑되어 관리한다. 예시에 따르면 aws provider가 aws_instance를 관리한다. 또한 type과 nam을 통해 고유 ID(`aws_instance.app_server`)를 만든다. 
 
-Block에는 리소스 구성에 필요한 인자(머신 크기, 디스크 이미지 이름, VPC ID) 값들이 있다. 각 리소스마다 필요한 인자 값들은 [레퍼런스](https://developer.hashicorp.com/terraform/language/providers)를 확인하자. 예제 구성에는 AMI ID를 Ubuntu 이미지로 설정하고 t2.micro 인스턴스 유형을 사용했다. 또한 인스턴스 이름을 지정하는 태그를 설정했다.
+Block에는 리소스 구성에 필요한 인자(머신 크기, 디스크 이미지 이름, VPC ID) 값들이 있다. 각 리소스마다 필요한 인자 값들은 [여기서](https://registry.terraform.io/providers/hashicorp/aws/latest/docs) 확인하자. 예제 구성에는 AMI ID를 Ubuntu 이미지로 설정하고 t2.micro 인스턴스 유형을 사용했다. 또한 인스턴스 이름을 지정하는 태그를 설정했다.
 
 
 ## 디렉토리 초기화(Initialize)
