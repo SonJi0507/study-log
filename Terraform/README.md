@@ -96,3 +96,5 @@ container를 멈추기 위해 destroy를 활용하자.
 ``` sh
 terraform destroy
 ```
+
+## [AWS](https://github.com/SonJi0507/study-log/tree/terraform/Terraform/src/learn-terraform-aws-instance)
