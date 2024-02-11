@@ -3,7 +3,6 @@
 __pycache__
 *.pyc
 
-# TODO:임시 Terraform 업로드 후 변경 요망
 .terraform
 .terraform.*
 terraform.*

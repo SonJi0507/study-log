@@ -177,7 +177,7 @@ app.config_from_object('celeryconfig')
 ```
 (celeryconfig 모듈 이름은 자유롭게 설정할 수 있다.)
 
-위의 예시에 따라서 지정된 모듈인 celeryconfig.py는 현대 디렉토리나 python 경로에서 반드시 사용 가능해야 한다.
+위의 예시에 따라서 지정된 모듈인 celeryconfig.py는 현재 디렉토리나 python 경로에서 반드시 사용 가능해야 한다.
 
 ``` python
 # celeryconfig.py
@@ -188,7 +188,7 @@ result_backend = 'rpc://'
 task_serializer = 'json'
 result_serializer = 'json'
 accept_content = ['json']
-timezone = 'Europe/Oslo'
+timezone = 'Asia/Seoul'
 enable_utc = True
 ```
 만약 해당 구성 파일이 제대로 작동하는지 확인 하려면 해당 파일을 불러보자.
@@ -198,4 +198,4 @@ python -m celeryconfig
 [Configuration and defaults](https://docs.celeryq.dev/en/stable/userguide/configuration.html#configuration)
 
 
-# 작성 중...
+## [Application에서 Celery 사용하기](https://github.com/SonJi0507/study-log/tree/main/Celery/celery-prac/src)
