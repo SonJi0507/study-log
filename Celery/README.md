@@ -198,4 +198,4 @@ python -m celeryconfig
 [Configuration and defaults](https://docs.celeryq.dev/en/stable/userguide/configuration.html#configuration)
 
 
-## [Application에서 Celery 사용하기]()
+## [Application에서 Celery 사용하기](https://github.com/SonJi0507/study-log/tree/main/Celery/celery-prac)
