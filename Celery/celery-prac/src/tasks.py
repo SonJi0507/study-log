@@ -1,8 +1,19 @@
-from celery import Celery
-
-app = Celery("tasks", backend="rpc://", broker="pyamqp://localhost:5672//")
+from .celery import app
 
 
 @app.task
 def add(x, y):
     return x + y
+
+
+@app.task
+def mul(x, y):
+    return x * y
+
+
+@app.task
+def xsum(numbers):
+    return sum(numbers)
+
+
+add.delay(2, 2)
