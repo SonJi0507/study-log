@@ -7,5 +7,6 @@ def io_bound_func():
 
 
 if __name__ == "__main__":
-    result = io_bound_func()
+    for i in range(10):
+        result = io_bound_func()
     print(result)
