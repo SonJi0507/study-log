@@ -9,4 +9,5 @@
 6. [Mock Server](https://github.com/SonJi0507/study-log/tree/main/Mock-server)
 7. [Celery](https://github.com/SonJi0507/study-log/tree/main/Celery)
 8. [Async-python](https://github.com/SonJi0507/study-log/tree/main/async-python)
+9. NextJS
 
