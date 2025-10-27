@@ -10,4 +10,5 @@
 7. [Celery](https://github.com/SonJi0507/study-log/tree/main/Celery)
 8. [Async-python](https://github.com/SonJi0507/study-log/tree/main/async-python)
 9. [NextJS](https://github.com/SonJi0507/study-log/tree/main/NextJS)
-10. uv
+10. [uv](https://github.com/SonJi0507/study-log/tree/main/uv)
+11. [RabbitMQ](https://github.com/SonJi0507/study-log/tree/main/RabbitMQ)
